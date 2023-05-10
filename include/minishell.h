@@ -6,7 +6,7 @@
 /*   By: nouakhro <nouakhro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 14:20:41 by nouakhro          #+#    #+#             */
-/*   Updated: 2023/05/10 13:13:39 by nouakhro         ###   ########.fr       */
+/*   Updated: 2023/05/10 17:31:45 by nouakhro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define MINISHELL_H
 # include "../src/libft/libft.h"
 # include <fcntl.h>
-# include <limits.h>
 # include <readline/history.h>
 # include <readline/readline.h>
 # include <signal.h>
@@ -145,7 +144,8 @@ void				free_commande_whit_out_path(int i, int j);
 void				error_in_commande(int c_of_s);
 char				*_not_alphanum_after_dolar(char *whotout_expande,
 						char *my_string, t_var *variables);
-int					splite_argemnt(int i, int checker, char *splite_char);
+int					splite_argemnt(int i, int checker, char \
+					*splite_char_sp, char *splite_char_tp);
 void				_exit(int c_of_s);
 void				error_is_exist(int c_of_s);
 void				exicut_commande(int i, int c_of_s);
@@ -165,9 +165,8 @@ int					get_the_path(int c_of_s);
 void				exicut_echo(int c_of_s);
 int					quote_check(char *cmd);
 char				*my_getenv(t_list *head, char *var, int trim);
-// void			rl_replace_line (const char *text, int clear_undo);
+void				rl_replace_line(const char *text, int clear_undo);
 char				*ft_strjoin_v2(char const *s1, char const *s2);
-// void check_leaks();
 void				handler(int sig);
 int					cd_commade(int c_of_s);
 int					mini_check_export(char *src);
@@ -193,8 +192,8 @@ int					rederaction_and_builtins(int c_of_s);
 void				_path_comanmde(int i);
 int					_parent_builtins(int c_of_s);
 int					after_parccing(int c_of_s);
-int					represent_between_each_argemnt(char splite_char, int i,
-						int *j);
+int					represent_between_each_argemnt(char splite_char_sp, \
+					char splite_char_tp, int i, int *j);
 int					each_argemnt(int i, int j);
 void				exit_error_not_numeric(int c_of_s, long long i);
 void				_exit(int c_of_s);

@@ -6,17 +6,13 @@
 #    By: nouakhro <nouakhro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 12:19:16 by nouakhro          #+#    #+#              #
-#    Updated: 2023/05/09 21:59:43 by nouakhro         ###   ########.fr        #
+#    Updated: 2023/05/10 17:47:02 by nouakhro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-ifeq ($(DEBUG),1)
-	OPTS = -fsanitize=address -g
-endif
-
 CC = cc
 
-CCFLAGS = -Wall -Werror -Wextra $(OPTS)
+CCFLAGS = -Wall -Werror -Wextra
 
 BUILTINS = $(addprefix builtins/,  builtins_in_chiled builtins_in_parent builtins_is_exist bultins_execut_in_parent)
 COMMANDE = $(addprefix commande/,  cd_commande commande echo_command env_commd exit export_command partition_commande_by_commande pwd_command split_commande_rederaction unset_command)
@@ -31,13 +27,17 @@ OBJE        = $(SRC:.c=.o)
 
 NAME = minishell
 
+READLINE = $(shell brew  --prefix readline)
+
+FLAG_READ_LINE = -L $(READLINE)/lib -I $(READLINE)/include
+
 LIBFT = src/libft
 
 all : $(NAME)
 
 $(NAME) : $(OBJE)
 	make -C $(LIBFT)
-	$(CC) $(CCFLAGS) $(OBJE) $(LIBFT)/libft.a -lreadline  -o $(NAME)
+	$(CC) $(CCFLAGS) $(OBJE) $(LIBFT)/libft.a -lreadline  $(FLAG_READ_LINE) -o $(NAME)
 
 %.o : %.c
 	$(CC) $(CCFLAGS) -c $< -o $@

@@ -6,7 +6,7 @@
 /*   By: nouakhro <nouakhro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:05:18 by hdagdagu          #+#    #+#             */
-/*   Updated: 2023/05/09 19:20:19 by nouakhro         ###   ########.fr       */
+/*   Updated: 2023/05/10 17:19:39 by nouakhro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ void	delete_node(t_list *list, t_list *head, int x)
 				break ;
 			back = back->next;
 		}
-		ft_lstdelone(list, del);
 		back->next = list->next;
+		ft_lstdelone(list, del);
 	}
 }
 
