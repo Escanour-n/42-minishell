@@ -6,7 +6,7 @@
 /*   By: nouakhro <nouakhro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:29:51 by nouakhro          #+#    #+#             */
-/*   Updated: 2023/05/09 23:38:36 by nouakhro         ###   ########.fr       */
+/*   Updated: 2023/05/10 14:25:54 by nouakhro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	check_error_and_excute_comande(int c_of_s)
 
 	path_doase_not_exist(c_of_s);
 	handel_pipe_and_rederaction(c_of_s);
+	
 	j = builtins(c_of_s);
 	j = 0;
 	i = 0;
@@ -56,5 +57,15 @@ void	check_error_and_excute_comande(int c_of_s)
 	if (j != 1)
 		error_is_exist(c_of_s);
 	else
+	{
+		j = 0;
+		while (j < g_struct.number_of_pipes - 1)
+		{
+			close(g_struct.each_cmd[j].fd[1]);
+			close(g_struct.each_cmd[j].fd[0]);
+			j++;
+		}
+
+	}
 		exicut_commande(i, c_of_s);
 }
