@@ -6,7 +6,7 @@
 /*   By: nouakhro <nouakhro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:27:59 by nouakhro          #+#    #+#             */
-/*   Updated: 2023/05/09 15:53:05 by nouakhro         ###   ########.fr       */
+/*   Updated: 2023/05/13 00:13:12 by nouakhro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,18 @@ void	path_doase_not_exist(int c_of_s)
 
 int	path_is_exist(int c_of_s, int j)
 {
+	int len = ft_strlen(g_struct.each_cmd[c_of_s].cmd[0]) - 1;
+	if(g_struct.each_cmd[c_of_s].cmd[0][len] == '/')
+	{
+		g_struct.each_cmd[c_of_s].cmd[0][len] = '\0';
+		if(access(g_struct.each_cmd[c_of_s].cmd[0], F_OK) == 0)
+		{
+			g_struct.each_cmd[c_of_s].cmd[0][len] = '/';
+			printf("minishell: %s: Not a directory\n",g_struct.each_cmd[c_of_s].cmd[0]);
+			exit(126);
+		}
+		g_struct.each_cmd[c_of_s].cmd[0][len] = '/';
+	}
 	if (g_struct.each_cmd[c_of_s].cmd[0]
 		&& access(g_struct.each_cmd[c_of_s].cmd[0], F_OK) == 0)
 	{

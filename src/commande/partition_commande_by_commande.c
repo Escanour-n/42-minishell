@@ -6,7 +6,7 @@
 /*   By: nouakhro <nouakhro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:52:38 by nouakhro          #+#    #+#             */
-/*   Updated: 2023/05/12 01:24:18 by nouakhro         ###   ########.fr       */
+/*   Updated: 2023/05/12 20:22:37 by nouakhro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int	partition_of_comande_and_rederaction(t_var *variables, int c_of_s)
 	g_struct.splite_pipe[variables->index_i] = 0;
 	free(g_struct.the_commande);
 	free(g_struct.tmp_cmd);
+	// printf("fdfdfd\n");
 	g_struct.the_commande = 0;
 	g_struct.tmp_cmd = 0;
 	return (0);

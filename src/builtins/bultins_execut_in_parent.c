@@ -6,7 +6,7 @@
 /*   By: nouakhro <nouakhro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:39:41 by nouakhro          #+#    #+#             */
-/*   Updated: 2023/05/12 18:36:27 by nouakhro         ###   ########.fr       */
+/*   Updated: 2023/05/12 21:47:29 by nouakhro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 int	some_builtins_in_parent(int c_of_s)
 {
-	if (g_struct.each_cmd[c_of_s].cmd[0]
-		&& ft_strlen(g_struct.each_cmd[c_of_s].cmd[0])
-		&& !ft_strncmp(g_struct.each_cmd[c_of_s].cmd[0], "cd",
-			ft_strlen(g_struct.each_cmd[c_of_s].cmd[0])))
+	if (g_struct.each_cmd[c_of_s].cmd[0] && \
+	ft_strlen(g_struct.each_cmd[c_of_s].cmd[0]) && \
+	!ft_strncmp(g_struct.each_cmd[c_of_s].cmd[0], "cd", ft_strlen("cd") + 1))
 	{
 		if (cd_commade(c_of_s))
 			return (-1);
@@ -39,7 +38,6 @@ int	some_builtins_in_parent(int c_of_s)
 int	builtins_in_parent(int c_of_s)
 {
 	int	i;
-
 	i = some_builtins_in_parent(c_of_s);
 	if (i != 0)
 		return (i);

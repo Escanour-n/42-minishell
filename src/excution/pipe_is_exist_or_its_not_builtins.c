@@ -6,7 +6,7 @@
 /*   By: nouakhro <nouakhro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:29:51 by nouakhro          #+#    #+#             */
-/*   Updated: 2023/05/10 15:12:27 by nouakhro         ###   ########.fr       */
+/*   Updated: 2023/05/12 22:16:08 by nouakhro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	pipe_is_exist_or_its_not_builtins(int c_of_s, int i)
 		if (i == 0)
 		{
 			signal(SIGINT, SIG_DFL);
+			signal(SIGQUIT, SIG_DFL);
 			check_error_and_excute_comande(c_of_s);
 		}
 		else

@@ -6,7 +6,7 @@
 /*   By: nouakhro <nouakhro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 15:07:52 by nouakhro          #+#    #+#             */
-/*   Updated: 2023/05/12 01:32:34 by nouakhro         ###   ########.fr       */
+/*   Updated: 2023/05/12 21:49:31 by nouakhro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int	main(int argc, char **argv, char **env)
 	{
 		g_struct.the_commande = 0;
 		g_struct.cmd = readline("escanour > ");
+		// printf("%s\n", g_struct.cmd);
 		if (!g_struct.cmd)
 		{
 			free_linked_list();

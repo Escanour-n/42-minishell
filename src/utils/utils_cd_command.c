@@ -6,7 +6,7 @@
 /*   By: nouakhro <nouakhro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/20 15:52:51 by hdagdagu          #+#    #+#             */
-/*   Updated: 2023/05/12 01:46:06 by nouakhro         ###   ########.fr       */
+/*   Updated: 2023/05/12 20:23:04 by nouakhro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ int	_cd_whith_slash(int c_of_s, int pid)
 
 int	_cd(int c_of_s, int pid)
 {
-	printf("fvvfvfv\n");
+	// printf("fvvfvfv\n");
 	if (ft_strlen(g_struct.each_cmd[c_of_s].cmd[0]) == 2
 		&& !g_struct.each_cmd[c_of_s].cmd[1])
 	{
