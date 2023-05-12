@@ -6,7 +6,7 @@
 /*   By: nouakhro <nouakhro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 14:22:56 by nouakhro          #+#    #+#             */
-/*   Updated: 2023/05/09 23:49:12 by nouakhro         ###   ########.fr       */
+/*   Updated: 2023/05/12 00:31:51 by nouakhro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ char	*is_alphabet_after_dolar(t_var *var, \
 	if (variable)
 	{
 		my_string = ft_strjoin(my_string, variable);
+		// printf("*%p*\n", my_string);
 		free_parccing_part_after_error(my_string);
 		if (g_struct.ambiguous == 1)
 		{
@@ -87,7 +88,6 @@ char	*variables_parceen(t_var *variables, \
 	char *whotout_expande, char *my_string)
 {
 	int		end;
-
 	end = variables->index_j + 1;
 	while (whotout_expande[end] && (ft_isalpha(whotout_expande[end]) \
 	|| ft_isdigit(whotout_expande[end]) || whotout_expande[end] == '_'))

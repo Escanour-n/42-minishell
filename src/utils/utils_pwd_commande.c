@@ -6,7 +6,7 @@
 /*   By: nouakhro <nouakhro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 19:18:30 by nouakhro          #+#    #+#             */
-/*   Updated: 2023/05/09 19:45:49 by nouakhro         ###   ########.fr       */
+/*   Updated: 2023/05/12 17:50:15 by nouakhro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,13 @@ t_list	*searcher(t_list *list, char *old)
 	free_excution_part_after_error(new->content);
 	list = old_list;
 	new_1 = i_have(list, "PWD");
-	free(new_1->content);
-	new_1->content = ft_strjoin_v2(ft_strdup("PWD="), getcwd(NULL, 255));
-	free_excution_part_after_error(new_1->content);
-	list = old_list;
+	if(new_1)
+	{
+		free(new_1->content);
+		char *str = getcwd(NULL, 0);
+		new_1->content = ft_strjoin_v2(ft_strdup("PWD="), str);
+		free_excution_part_after_error(new_1->content);
+		list = old_list;
+	}
 	return (list);
 }

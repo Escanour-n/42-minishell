@@ -6,7 +6,7 @@
 /*   By: nouakhro <nouakhro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:39:41 by nouakhro          #+#    #+#             */
-/*   Updated: 2023/05/09 15:52:25 by nouakhro         ###   ########.fr       */
+/*   Updated: 2023/05/12 18:36:27 by nouakhro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	builtins_in_parent(int c_of_s)
 	if (g_struct.each_cmd[c_of_s].cmd && g_struct.each_cmd[c_of_s].cmd[0]
 		&& !ft_strncmp(g_struct.each_cmd[c_of_s].cmd[0], "exit",
 			ft_strlen("exit")))
-		_exit(c_of_s);
+		if(exit_prog(c_of_s))
+			return (-1);
 	return (0);
 }

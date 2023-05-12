@@ -6,7 +6,7 @@
 /*   By: nouakhro <nouakhro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 15:11:31 by nouakhro          #+#    #+#             */
-/*   Updated: 2023/05/09 15:51:39 by nouakhro         ###   ########.fr       */
+/*   Updated: 2023/05/12 00:32:06 by nouakhro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,18 @@
 int	calculat_how_many_argemnt_in_vaiable(t_var \
 *variables, int cas, int if_error, char **str)
 {
-	if (str[if_error])
-	{
-		free(g_struct.each_cmd[variables->index_i].files[cas].files);
-		g_struct.each_cmd[variables->index_i].files[cas].files = 0;
-	}
+	if_error = 0;
+	// if (str[if_error])
+	// {
+	// 	printf("11[(%p)]\n", g_struct.each_cmd[variables->index_i].files[cas].files);
+	// }
 	while (str[if_error])
 	{
-		g_struct.each_cmd[variables->index_i].files[cas].files \
-		= ft_strdup(str[if_error]);
-		free_parccing_part_after_error \
-		(g_struct.each_cmd[variables->index_i].files[cas].files);
+		// printf("[%p]\n", str[if_error]);
+		free(g_struct.each_cmd[variables->index_i].files[cas].files);
+		g_struct.each_cmd[variables->index_i].files[cas].files = 0;
+		g_struct.each_cmd[variables->index_i].files[cas].files = ft_strdup(str[if_error]);
+		free_parccing_part_after_error(g_struct.each_cmd[variables->index_i].files[cas].files);
 		free(str[if_error]);
 		if_error++;
 	}
@@ -46,12 +47,15 @@ int	remove_quotes_and_expande_variables_in_input(t_var \
 	g_struct.ambiguous = 1;
 	g_struct.error_ambiguous = 0;
 	quotes(variables, cas);
+	// printf("2*%p2*\n", g_struct.each_cmd[variables->index_i].files[cas].files);
 	str = ft_split(g_struct.each_cmd[variables->index_i].files[cas].files, 3);
 	free_parccing_part_after_error(str);
-	if_error = 0;
 	if_error = calculat_how_many_argemnt_in_vaiable \
-	(variables, cas, if_error, str);
+	(variables, cas, 0, str);
 	free(str);
+	// printf("--------------------------------------\n");
+	// system("leaks minishell");
+	// printf("--------------------------------------\n");
 	return (if_error);
 }
 

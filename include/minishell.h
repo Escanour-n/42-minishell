@@ -6,7 +6,7 @@
 /*   By: nouakhro <nouakhro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 14:20:41 by nouakhro          #+#    #+#             */
-/*   Updated: 2023/05/10 17:31:45 by nouakhro         ###   ########.fr       */
+/*   Updated: 2023/05/12 18:36:25 by nouakhro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,7 +146,7 @@ char				*_not_alphanum_after_dolar(char *whotout_expande,
 						char *my_string, t_var *variables);
 int					splite_argemnt(int i, int checker, char \
 					*splite_char_sp, char *splite_char_tp);
-void				_exit(int c_of_s);
+int					exit_prog(int c_of_s);
 void				error_is_exist(int c_of_s);
 void				exicut_commande(int i, int c_of_s);
 char				**new_env(t_list *list);
@@ -196,7 +196,6 @@ int					represent_between_each_argemnt(char splite_char_sp, \
 					char splite_char_tp, int i, int *j);
 int					each_argemnt(int i, int j);
 void				exit_error_not_numeric(int c_of_s, long long i);
-void				_exit(int c_of_s);
 void				some_builtins(int c_of_s);
 void				another_builtins(int c_of_s);
 int					some_builtins_in_parent(int c_of_s);

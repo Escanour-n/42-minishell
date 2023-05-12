@@ -6,7 +6,7 @@
 /*   By: nouakhro <nouakhro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 14:19:18 by hdagdagu          #+#    #+#             */
-/*   Updated: 2023/05/09 19:18:42 by nouakhro         ###   ########.fr       */
+/*   Updated: 2023/05/12 16:23:23 by nouakhro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	pwd_command(void)
 {
-	char	wd[255];
+	char	*wd;
 
-	wd[255 - 1] = '\0';
-	if (getcwd(wd, 255 - 1) != NULL)
+	wd = getcwd(0, 0);
+	if (wd != NULL)
 		printf("%s\n", wd);
 }

@@ -6,7 +6,7 @@
 /*   By: nouakhro <nouakhro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:24:18 by nouakhro          #+#    #+#             */
-/*   Updated: 2023/05/10 14:49:18 by nouakhro         ###   ########.fr       */
+/*   Updated: 2023/05/12 01:20:23 by nouakhro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,27 +39,29 @@ void	wait_and_close_all(int c_of_s, int *pid)
 void	free_commande_whit_out_path(int i, int j)
 {
 	i = 0;
-	while (g_struct.each_cmd[i].files)
+	while (g_struct.each_cmd[i].files || g_struct.each_cmd[i].cmd)
 	{
 		j = 0;
-		while (g_struct.each_cmd[i].files[j].files)
+		if(g_struct.each_cmd[i].files)
 		{
-			free(g_struct.each_cmd[i].files[j].files);
-			j++;
+			j = 0;
+			while (g_struct.each_cmd[i].files[j].files)
+			{
+				free(g_struct.each_cmd[i].files[j].files);
+				j++;
+			}
+			free(g_struct.each_cmd[i].files);
 		}
-		free(g_struct.each_cmd[i].files);
-		i++;
-	}
-	i = 0;
-	while (g_struct.each_cmd[i].cmd)
-	{
-		j = 0;
-		while (g_struct.each_cmd[i].cmd[j])
+		if(g_struct.each_cmd[i].cmd)
 		{
-			free(g_struct.each_cmd[i].cmd[j]);
-			j++;
+			j = 0;
+			while (g_struct.each_cmd[i].cmd[j])
+			{
+				free(g_struct.each_cmd[i].cmd[j]);
+				j++;
+			}
+			free(g_struct.each_cmd[i].cmd);
 		}
-		free(g_struct.each_cmd[i].cmd);
 		i++;
 	}
 	free(g_struct.each_cmd);

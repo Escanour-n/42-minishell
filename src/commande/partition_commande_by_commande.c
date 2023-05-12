@@ -6,7 +6,7 @@
 /*   By: nouakhro <nouakhro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:52:38 by nouakhro          #+#    #+#             */
-/*   Updated: 2023/05/09 17:52:41 by nouakhro         ###   ########.fr       */
+/*   Updated: 2023/05/12 01:24:18 by nouakhro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	partition_of_comande_and_rederaction(t_var *variables, int c_of_s)
 	variables->index_j = 0;
 	g_struct.the_commande = ft_calloc(1, 1);
 	free_parccing_part_after_error(g_struct.tmp_cmd);
+	// printf("cdscdsc\n");
 	if_rediraction_is_existe(variables);
 	c_of_s = 0;
 	variables->index_j = 0;
@@ -54,7 +55,9 @@ int	partition_of_comande_and_rederaction(t_var *variables, int c_of_s)
 	free(g_struct.splite_pipe[variables->index_i]);
 	g_struct.splite_pipe[variables->index_i] = 0;
 	free(g_struct.the_commande);
+	free(g_struct.tmp_cmd);
 	g_struct.the_commande = 0;
+	g_struct.tmp_cmd = 0;
 	return (0);
 }
 
