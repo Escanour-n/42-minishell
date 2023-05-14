@@ -6,7 +6,7 @@
 /*   By: nouakhro <nouakhro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:39:41 by nouakhro          #+#    #+#             */
-/*   Updated: 2023/05/12 21:47:29 by nouakhro         ###   ########.fr       */
+/*   Updated: 2023/05/14 03:31:40 by nouakhro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,26 +32,28 @@ int	some_builtins_in_parent(int c_of_s)
 			return (-1);
 		return (1);
 	}
+	if (g_struct.each_cmd[c_of_s].cmd[0] && !ft_strncmp(g_struct.each_cmd \
+	[c_of_s].cmd[0], "env", ft_strlen("env") + 1))
+	{
+		env_command(g_struct.list);
+		return (1);
+	}
 	return (0);
 }
 
 int	builtins_in_parent(int c_of_s)
 {
 	int	i;
+
 	i = some_builtins_in_parent(c_of_s);
 	if (i != 0)
 		return (i);
 	if (g_struct.each_cmd[c_of_s].cmd[0]
-		&& !ft_strncmp(g_struct.each_cmd[c_of_s].cmd[0], "env", ft_strlen("env")
-			+ 1))
-	{
-		env_command(g_struct.list);
-		return (1);
-	}
-	if (g_struct.each_cmd[c_of_s].cmd[0]
 		&& !ft_strncmp(g_struct.each_cmd[c_of_s].cmd[0], "unset",
 			ft_strlen("unset") + 1))
 	{
+		if (!g_struct.list)
+			return (1);
 		if (unset_command(c_of_s))
 			return (-1);
 		return (1);
@@ -59,7 +61,7 @@ int	builtins_in_parent(int c_of_s)
 	if (g_struct.each_cmd[c_of_s].cmd && g_struct.each_cmd[c_of_s].cmd[0]
 		&& !ft_strncmp(g_struct.each_cmd[c_of_s].cmd[0], "exit",
 			ft_strlen("exit")))
-		if(exit_prog(c_of_s))
+		if (exit_prog(c_of_s))
 			return (-1);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: nouakhro <nouakhro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 15:07:52 by nouakhro          #+#    #+#             */
-/*   Updated: 2023/05/12 21:49:31 by nouakhro         ###   ########.fr       */
+/*   Updated: 2023/05/14 15:40:36 by nouakhro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	handler(int sig)
 {
 	if (sig == SIGINT)
 	{
-		// rl_replace_line("", 0);
+		rl_replace_line("", 0);
 		printf("\n");
 		rl_on_new_line();
 		rl_redisplay();
@@ -67,7 +67,6 @@ int	main(int argc, char **argv, char **env)
 	{
 		g_struct.the_commande = 0;
 		g_struct.cmd = readline("escanour > ");
-		// printf("%s\n", g_struct.cmd);
 		if (!g_struct.cmd)
 		{
 			free_linked_list();
@@ -76,8 +75,5 @@ int	main(int argc, char **argv, char **env)
 		if (ft_strlen(g_struct.cmd) != 0)
 			g_struct.exit_status = somting_in_readline();
 		free(g_struct.cmd);
-		// printf("--------------------------------------\n");
-		// system("leaks minishell");
-		// printf("--------------------------------------\n");
 	}
 }

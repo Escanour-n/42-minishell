@@ -6,7 +6,7 @@
 /*   By: nouakhro <nouakhro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:24:18 by nouakhro          #+#    #+#             */
-/*   Updated: 2023/05/12 01:20:23 by nouakhro         ###   ########.fr       */
+/*   Updated: 2023/05/13 22:42:11 by nouakhro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	wait_and_close_all(int c_of_s, int *pid)
 		close(g_struct.fils_descreprot);
 	while (i < c_of_s - 1)
 	{
+		close(g_struct.each_cmd[i].fd[1]);
 		close(g_struct.each_cmd[i].fd[0]);
 		i++;
 	}
@@ -38,11 +39,10 @@ void	wait_and_close_all(int c_of_s, int *pid)
 
 void	free_commande_whit_out_path(int i, int j)
 {
-	i = 0;
 	while (g_struct.each_cmd[i].files || g_struct.each_cmd[i].cmd)
 	{
 		j = 0;
-		if(g_struct.each_cmd[i].files)
+		if (g_struct.each_cmd[i].files)
 		{
 			j = 0;
 			while (g_struct.each_cmd[i].files[j].files)
@@ -52,7 +52,7 @@ void	free_commande_whit_out_path(int i, int j)
 			}
 			free(g_struct.each_cmd[i].files);
 		}
-		if(g_struct.each_cmd[i].cmd)
+		if (g_struct.each_cmd[i].cmd)
 		{
 			j = 0;
 			while (g_struct.each_cmd[i].cmd[j])
@@ -64,7 +64,6 @@ void	free_commande_whit_out_path(int i, int j)
 		}
 		i++;
 	}
-	free(g_struct.each_cmd);
 }
 
 void	free_all_v2(int num)
@@ -83,5 +82,6 @@ void	free_all_v2(int num)
 		}
 		free(g_struct.my_path);
 	}
-	free_commande_whit_out_path(i, j);
+	free_commande_whit_out_path(0, 0);
+	free(g_struct.each_cmd);
 }

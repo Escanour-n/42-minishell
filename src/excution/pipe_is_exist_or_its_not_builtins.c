@@ -6,7 +6,7 @@
 /*   By: nouakhro <nouakhro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/08 13:29:51 by nouakhro          #+#    #+#             */
-/*   Updated: 2023/05/12 22:16:08 by nouakhro         ###   ########.fr       */
+/*   Updated: 2023/05/13 21:53:05 by nouakhro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 void	pipe_is_exist_or_its_not_builtins(int c_of_s, int i)
 {
 	int	*pid;
+	int	number_of_pipe;
 
+	number_of_pipe = g_struct.number_of_pipes;
 	c_of_s = 0;
 	pid = malloc(g_struct.number_of_pipes * sizeof(int));
 	while (g_struct.number_of_pipes > 0)
@@ -27,12 +29,10 @@ void	pipe_is_exist_or_its_not_builtins(int c_of_s, int i)
 		{
 			signal(SIGINT, SIG_DFL);
 			signal(SIGQUIT, SIG_DFL);
-			check_error_and_excute_comande(c_of_s);
+			check_error_and_excute_comande(c_of_s, number_of_pipe);
 		}
 		else
 			pid[c_of_s] = i;
-		if (g_struct.number_of_pipes > 1)
-			close(g_struct.each_cmd[c_of_s].fd[1]);
 		g_struct.number_of_pipes--;
 		c_of_s++;
 	}
@@ -41,7 +41,7 @@ void	pipe_is_exist_or_its_not_builtins(int c_of_s, int i)
 	free(pid);
 }
 
-void	check_error_and_excute_comande(int c_of_s)
+void	check_error_and_excute_comande(int c_of_s, int number_of_pipe)
 {
 	int	j;
 	int	i;
@@ -49,7 +49,7 @@ void	check_error_and_excute_comande(int c_of_s)
 	path_doase_not_exist(c_of_s);
 	handel_pipe_and_rederaction(c_of_s);
 	j = 0;
-	while (j < g_struct.number_of_pipes - 1)
+	while (j < number_of_pipe - 1)
 	{
 		close(g_struct.each_cmd[j].fd[1]);
 		close(g_struct.each_cmd[j].fd[0]);
